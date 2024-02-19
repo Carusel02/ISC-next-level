@@ -50,4 +50,3 @@ from information_schema.columns where table_schema='web_270' and table_name='fla
 ### Task5
 - se scaneaza traficul cu tcpdump si se observa ca anumite pachete contin `NYAN.NYAN..`
 - se ia partea dintre NYAN si se decodifica cu `base64`
-````
